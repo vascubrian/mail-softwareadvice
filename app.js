@@ -14,6 +14,7 @@ app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
 app.use(express.json({ limit: '2mb' }));
 app.use('/api/auth/login', rateLimit({ windowMs: 15 * 60 * 1000, limit: 20 }));
 app.get('/api/health', (_req, res) => res.json({ success: true, message: 'API is healthy' }));
+app.get('/api/unsubscribe/:token', require('./app-apis/controllers/UnsubscribeController').unsubscribe);
 app.use('/api/auth', require('./app-apis/routes/auth'));
 app.use('/api/leads', require('./app-apis/routes/leads'));
 app.use('/api/imports', require('./app-apis/routes/imports'));

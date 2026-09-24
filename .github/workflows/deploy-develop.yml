@@ -28,4 +28,4 @@ jobs:
           git remote set-url origin https://vascubrian:${{ secrets.GH_TOKEN }}@github.com/vascubrian/mail-softwareadvice.git
           git pull origin develop
           npm install --save
-          npm run db:sync
+          npm run db:migrate

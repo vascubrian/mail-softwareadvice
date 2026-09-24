@@ -7,7 +7,7 @@ exports.list = async (req, res, next) => {
     const page = Math.max(Number(req.query.page) || 1, 1), limit = Math.min(Number(req.query.limit) || 25, 100);
     const where = { deleted: 0 };
     if (req.query.search) where[Op.or] = ['name','email','company','job_title'].map((field) => ({ [field]: { [Op.like]: `%${req.query.search}%` } }));
-    ['status','source','country','qualification_status'].forEach((field) => { if (req.query[field]) where[field] = req.query[field]; });
+    ['status','country','qualification_status'].forEach((field) => { if (req.query[field]) where[field] = req.query[field]; }); if (req.query.source === 'APOLLO') where.source = 'APOLLO'; else if (req.query.source === 'MANUAL_IMPORT') where.source = { [Op.in]: ['MANUAL','CSV','EXCEL','API'] };
     const allowedSort = ['created_time','name','email','company','status','last_contact_time'];
     const sort = allowedSort.includes(req.query.sort) ? req.query.sort : 'created_time';
     const direction = req.query.direction === 'asc' ? 'ASC' : 'DESC';
