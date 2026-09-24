@@ -9,7 +9,7 @@ module.exports = (sequelize) => sequelize.define('leads', {
   company_size: DataTypes.STRING(60), industry: DataTypes.STRING(150),
   source: { type: DataTypes.ENUM('MANUAL','CSV','EXCEL','APOLLO','API'), defaultValue: 'MANUAL' },
   apollo_id: DataTypes.STRING(100),
-  status: { type: DataTypes.ENUM('NEW','RESEARCHED','QUALIFIED','UNQUALIFIED','CONTACTED','REPLIED','INTERESTED','DEMO_BOOKED','NOT_INTERESTED','UNSUBSCRIBED'), defaultValue: 'NEW' },
+  status: { type: DataTypes.ENUM('SUBSCRIBED','UNSUBSCRIBED'), defaultValue: 'SUBSCRIBED' },
   qualification_status: { type: DataTypes.STRING(50), defaultValue: 'PENDING' }, qualification_score: DataTypes.INTEGER,
   qualification_reason: DataTypes.TEXT, qualification_time: DataTypes.DATE, ai_research: DataTypes.TEXT('long'), ai_summary: DataTypes.TEXT,
   buying_signals: DataTypes.TEXT, notes: DataTypes.TEXT, last_contact_time: DataTypes.DATE
