@@ -24,7 +24,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           set -e
-          source /home/shuloizc/nodevenv/shule-nodeJS/18/bin/activate && cd /home/shuloizc/mail-softwareadvice
+          source /home/shuloizc/nodevenv/mail-softwareadvice/20/bin/activate && cd /home/shuloizc/mail-softwareadvice
           git remote set-url origin https://vascubrian:${{ secrets.GH_TOKEN }}@github.com/vascubrian/mail-softwareadvice.git
           git pull origin develop
           npm install --save
