@@ -1,0 +1,2 @@
+import { createTheme } from '@mui/material/styles';
+export default createTheme({ palette: { primary: { main: '#5B5BD6' }, secondary: { main: '#12A594' }, background: { default: '#F6F7FB' } }, shape: { borderRadius: 12 }, typography: { fontFamily: 'Inter, system-ui, sans-serif', h4: { fontWeight: 750 }, h5: { fontWeight: 700 }, button: { textTransform: 'none', fontWeight: 650 } }, components: { MuiCard: { styleOverrides: { root: { border: '1px solid #E7E8EF', boxShadow: '0 3px 14px rgba(25, 30, 60, .04)' } } } } });

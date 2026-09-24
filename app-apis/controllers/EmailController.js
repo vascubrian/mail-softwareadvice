@@ -1,0 +1,1 @@
+const {Email}=require('../models');exports.list=async(req,res,next)=>{try{const rows=await Email.findAll({where:{deleted:0},attributes:{exclude:['id','body']},order:[['created_time','DESC']],limit:100});res.json({success:true,message:'Email activity retrieved successfully',data:rows})}catch(e){next(e)}};

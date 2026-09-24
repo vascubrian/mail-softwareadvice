@@ -1,0 +1,1 @@
+import api from './api';export const getTemplates=()=>api.get('/templates').then(r=>r.data);export const saveTemplate=(data,key)=>api[key?'put':'post'](key?`/templates/${key}`:'/templates',data).then(r=>r.data);

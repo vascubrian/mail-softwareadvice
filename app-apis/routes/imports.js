@@ -1,0 +1,12 @@
+const router = require('express').Router();
+const multer = require('multer');
+const auth = require('../middleware/AuthApi');
+const validate = require('../middleware/Validation');
+const rules = require('../validators/ValidateLeadImport');
+const controller = require('../controllers/LeadImportController');
+const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 * 1024 * 1024 }, fileFilter: (_req, file, cb) => cb(null, /\.(csv|xlsx)$/i.test(file.originalname)) });
+router.get('/', auth, controller.history);
+router.post('/preview', auth, upload.single('file'), controller.preview);
+router.post('/remap', auth, controller.remap);
+router.post('/confirm', auth, rules.confirm, validate, controller.confirm);
+module.exports = router;

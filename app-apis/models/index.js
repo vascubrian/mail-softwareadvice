@@ -1,0 +1,12 @@
+const sequelize = require('../config/database');
+const User = require('./ModUser')(sequelize);
+const Lead = require('./ModLead')(sequelize);
+const LeadImport = require('./ModLeadImport')(sequelize);
+const Activity = require('./ModActivity')(sequelize);
+const Campaign = require('./ModCampaign')(sequelize);
+const EmailTemplate = require('./ModEmailTemplate')(sequelize);
+const Email = require('./ModEmail')(sequelize);
+const Integration = require('./ModIntegration')(sequelize);
+Lead.hasMany(Activity, { foreignKey: 'lead_id', as: 'activities' });
+Activity.belongsTo(Lead, { foreignKey: 'lead_id' });
+module.exports = { sequelize, User, Lead, LeadImport, Activity, Campaign, EmailTemplate, Email, Integration };

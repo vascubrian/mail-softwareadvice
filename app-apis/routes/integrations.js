@@ -1,0 +1,1 @@
+const router=require('express').Router(),auth=require('../middleware/AuthApi'),c=require('../controllers/IntegrationController');router.get('/',auth,c.list);router.put('/:provider',auth,c.save);router.post('/:provider/test',auth,c.test);module.exports=router;

@@ -1,0 +1,1 @@
+import api from './api';export const getIntegrations=()=>api.get('/integrations').then(r=>r.data);export const saveIntegration=(provider,data)=>api.put(`/integrations/${provider}`,data).then(r=>r.data);export const testIntegration=provider=>api.post(`/integrations/${provider}/test`).then(r=>r.data);

@@ -1,0 +1,1 @@
+const router=require('express').Router(),auth=require('../middleware/AuthApi'),c=require('../controllers/CampaignController');router.get('/',auth,c.list);router.post('/',auth,c.save);router.put('/:key',auth,c.save);router.delete('/:key',auth,c.remove);router.post('/:key/send',auth,require('../controllers/CampaignSendController').send);module.exports=router;

@@ -1,0 +1,11 @@
+const router = require('express').Router();
+const auth = require('../middleware/AuthApi');
+const validate = require('../middleware/Validation');
+const rules = require('../validators/ValidateLead');
+const controller = require('../controllers/LeadController');
+router.get('/', auth, rules.list, validate, controller.list);
+router.get('/:key', auth, rules.key, validate, controller.get);
+router.post('/', auth, rules.save, validate, controller.save);
+router.put('/:key', auth, [...rules.key, ...rules.save], validate, controller.save);
+router.delete('/:key', auth, rules.key, validate, controller.remove);
+module.exports = router;
